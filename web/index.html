@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asesor UNI — agente documental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<div class="room">
+
+  <header class="room__header">
+    <div class="header__mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="34" height="34">
+        <path d="M6 12 L20 6 L34 12 L20 18 Z" fill="var(--brass)"/>
+        <path d="M6 12 L20 18 L20 34 L6 28 Z" fill="var(--brass-dim)"/>
+        <path d="M34 12 L20 18 L20 34 L34 28 Z" fill="var(--brass-dimmer)"/>
+      </svg>
+    </div>
+    <div class="header__text">
+      <h1>Asesor UNI</h1>
+      <p>Consultas sobre reglamentos, mallas y guías de la universidad — con cita exacta de la fuente</p>
+    </div>
+    <div class="header__status" id="status">
+      <span class="status__dot" id="statusDot"></span>
+      <span id="statusText">conectando…</span>
+    </div>
+  </header>
+
+  <main class="room__main">
+
+    <section class="chat" id="chat" aria-live="polite">
+      <div class="empty-state" id="emptyState">
+        <p class="empty-state__eyebrow">Ficha de consulta</p>
+        <h2>¿Qué necesitas saber?</h2>
+        <p class="empty-state__hint">Este agente solo responde con lo que dicen los documentos cargados. Si algo no está ahí, te lo va a decir en vez de inventarlo.</p>
+        <div class="chips" id="suggestions"></div>
+      </div>
+    </section>
+
+    <form class="composer" id="composer">
+      <input
+        type="text"
+        id="questionInput"
+        class="composer__input"
+        placeholder="Escribe tu pregunta…"
+        autocomplete="off"
+        maxlength="600"
+      >
+      <button type="submit" class="composer__send" id="sendBtn" aria-label="Enviar pregunta">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M3 11L21 3L13 21L11 13L3 11Z" fill="currentColor"/></svg>
+      </button>
+    </form>
+
+  </main>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__inner">
+      <button class="drawer__close" id="drawerClose" aria-label="Cerrar ficha">×</button>
+      <p class="drawer__eyebrow" id="drawerEyebrow">Fragmento citado</p>
+      <h3 class="drawer__source" id="drawerSource"></h3>
+      <p class="drawer__locator" id="drawerLocator"></p>
+      <div class="drawer__badge" id="drawerOcrBadge" hidden>vía OCR (documento escaneado)</div>
+      <p class="drawer__excerpt" id="drawerExcerpt"></p>
+    </div>
+  </aside>
+  <div class="drawer__scrim" id="drawerScrim"></div>
+
+</div>
+
+<script src="/assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# Configuración de Netlify.
+#
+# publish = "web"  →  el sitio estático (index.html, assets/) se sirve
+#   directamente desde web/, sin paso de build (no hay framework de por
+#   medio: HTML/CSS/JS planos).
+#
+# functions = "netlify/functions"  →  ask.js, health.js y diagnostico.js
+#   se despliegan como funciones serverless.
+#
+# El redirect de abajo hace que /api/ask (lo que ya llama web/assets/script.js)
+# apunte a /.netlify/functions/ask, para que frontend y backend vivan bajo
+# el mismo dominio — un solo link, sin configurar CORS.
+
+[build]
+  publish = "web"
+
+[functions]
+  directory = "netlify/functions"
+  # Sin este include, el bundler no empaqueta el índice (JSON estático,
+  # no un módulo de JS) junto con la función.
+  included_files = ["netlify/functions/data/*.json"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

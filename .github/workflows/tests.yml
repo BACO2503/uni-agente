@@ -1,0 +1,41 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar Tesseract (OCR)
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-spa poppler-utils
+
+      - name: Instalar dependencias de Python
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Correr pruebas de Python (sin API key, backends locales)
+        env:
+          EMBEDDER: hash
+          LLM: echo
+        run: pytest tests/ -v
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verificar sintaxis de las funciones de Netlify
+        run: |
+          node --check netlify/functions/ask.js
+          node --check netlify/functions/health.js
+          node --check netlify/functions/diagnostico.js

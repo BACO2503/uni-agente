@@ -1,0 +1,8 @@
+{
+  "name": "uni-agente",
+  "private": true,
+  "description": "Agente de IA documental — funciones serverless para el deploy en Netlify",
+  "engines": {
+    "node": ">=18"
+  }
+}

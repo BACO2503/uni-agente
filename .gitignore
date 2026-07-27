@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+index/
+*.npy
+.DS_Store
+
+# Los documentos reales (reglamentos, escaneos, etc.) no se suben al repo:
+# pueden contener datos personales o material con derechos de autor de la
+# universidad. Solo se versiona el set de ejemplo en data/ejemplo/.
+data/*
+!data/ejemplo/
+!data/README.md
