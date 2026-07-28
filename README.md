@@ -378,3 +378,14 @@ MIT.
 
 Sobre la integridad del historial de control de versiones:
 Durante la fase de integración, el repositorio experimentó un incidente de exposición de credenciales (GH013). En el proceso de remediación técnica y sanitización del árbol de trabajo, se ejecutó una reinicialización de la base de datos local de Git para purgar criptográficamente el secreto expuesto. Por este motivo, el historial de commits previo a la resolución de la vulnerabilidad no se encuentra reflejado en la rama principal actual.
+
+#Evidencia
+Este es el video de evidencia de que la app funcionó localmente
+
+
+https://github.com/user-attachments/assets/5e8e08e1-f9c6-4f3c-91d5-8e088075b412
+
+
+
+
+
